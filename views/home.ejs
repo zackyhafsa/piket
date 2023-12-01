@@ -1,0 +1,37 @@
+<div class="w-[60%] mx-auto">
+  <h1 class="font-bold text-3xl text-sky-600 text-center mt-5">Piket</h1>
+  <div>
+    <h1 class="font-semibold text-2xl">Daftar Piket Hari <%= hari %>:</h1>
+    <h1 class=""><%= waktu %></h1>
+    <div>
+      <table class="w-full table-auto border border-slate-500 my-5 rounded-lg mx-auto text-lg">
+        <tr class="bg-slate-300">
+          <th>No.</th>
+          <th>Nama</th>
+          <th>Sesi</th>
+          <th>Waktu</th>
+        </tr>
+        <% if (hari === "Jumat" || hari === "Sabtu" || hari === "Minggu") { %>
+        <tr>
+          <td colspan="4" class="text-center text-slate-600">Tidak ada yang piket</td>
+        </tr>
+        <% } %> <% if (jam < 9) { %>
+        <tr>
+          <td colspan="4" class="text-center text-slate-600">Piket Belum Dimulai</td>
+        </tr>
+        <% } else if (jam > 15) { %>
+        <tr>
+          <td colspan="4" class="text-center text-slate-600">Piket Sudah Selesai</td>
+        </tr>
+        <% } else { %> <% piket.forEach((pkt) => { %> <% if (pkt.hari === hari) {%>
+        <tr>
+          <td class="border text-center"><%= i++ %></td>
+          <td class="border"><%= pkt.nama %></td>
+          <td class="border text-center"><%= pkt.sesi %></td>
+          <td class="border text-center"><%= pkt.waktu %></td>
+        </tr>
+        <% } %> <% }) %><% } %>
+      </table>
+    </div>
+  </div>
+</div>

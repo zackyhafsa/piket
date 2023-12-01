@@ -1,0 +1,64 @@
+<div class="w-full h-screen flex justify-center items-center">
+  <div class="w-[600px] m-auto border p-5 rounded-lg max-sm:w-[90%]">
+    <h1 class="font-bold text-3xl text-sky-600 text-center">Login</h1>
+    <p class="text-center font-semibold text-slate-900">Silahkan Login Terlebih Dahulu</p>
+    <div>
+      <form action="/dashboard" method="post">
+        <div class="flex flex-col">
+          <label for="username" class="text-lg">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            class="border rounded-lg text-lg p-1 mb-4"
+          />
+          <label for="password" class="text-lg">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="border rounded-lg text-lg p-1"
+          />
+          <button
+            type="submit"
+            class="py-2 px-3 text-white rounded-lg bg-sky-600 mt-4 hover:bg-sky-700"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  const form = document.querySelector("form");
+
+  const users = [
+    {
+      username: "admin",
+      password: "admin",
+    },
+  ];
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const usernameInput = document.getElementById("username").value;
+    const passwordInput = document.getElementById("password").value;
+
+    const user = users.find((user) => user.username === usernameInput);
+
+    if (user && user.password === passwordInput) {
+      window.location.href = "/dashboard";
+    } else {
+      alert("Username dan Password salah");
+    }
+  });
+
+  window.addEventListener("hashchange", (e) => {
+    if (window.location.hash !== "") {
+      window.location.hash = "/";
+    }
+  });
+</script>

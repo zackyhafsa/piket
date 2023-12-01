@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {},
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <nav class="p-5 flex justify-between px-[10%] border border-b-1 shadow-sm relative z-10">
+      <h1 class="font-bold text-3xl">Piket</h1>
+      <div class="hidden max-sm:block" id="hamburger">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1.8rem" viewBox="0 0 448 512">
+          <path
+            d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
+          />
+        </svg>
+      </div>
+      <ul
+        class="flex max-sm:absolute max-sm:top-[100%] max-sm:-z-20 max-sm:flex-col max-sm:text-center max-sm:bg-white max-sm:border max-sm:w-[200px] max-sm:right-0 max-sm:hidden"
+        id="navbar"
+      >
+        <li class="max-sm:py-2 max-sm:px-3">
+          <a href="/dashboard" class="px-2 font-semibold text-xl hover:underline text-sky-600"
+            >Home</a
+          >
+        </li>
+        <!-- <li>
+          <a href="/mahasiswa" class="px-2 font-semibold text-xl hover:underline text-sky-600"
+            >Mahasiswa</a
+          >
+        </li> -->
+        <li class="max-sm:py-2 max-sm:px-3">
+          <a href="/piket" class="px-2 font-semibold text-xl hover:underline text-sky-600">Piket</a>
+        </li>
+        <li class="max-sm:py-2 max-sm:px-3">
+          <a href="/" class="px-2 font-semibold text-xl hover:underline text-sky-600">Logout</a>
+        </li>
+      </ul>
+    </nav>
+
+    <%- body %>
+
+    <script>
+      const menu = document.getElementById("hamburger");
+      const navbar = document.getElementById("navbar");
+      menu.addEventListener("click", () => {
+        navbar.classList.toggle("max-sm:hidden");
+      });
+      document.addEventListener("click", (e) => {
+        if (!menu.contains(e.target) && !navbar.contains(e.target)) {
+          navbar.classList.add("max-sm:hidden");
+        }
+      });
+    </script>
+  </body>
+</html>

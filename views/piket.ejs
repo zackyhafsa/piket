@@ -1,0 +1,36 @@
+<div class="w-[60%] mx-auto">
+  <div class="w-full">
+    <h3 class="text-center font-bold text-3xl text-sky-600 py-4">Daftar Piket</h3>
+    <div class="">
+      <a
+        href="/piket/daftar"
+        class="text-lg text-white font-semibold py-2 px-3 rounded-lg bg-sky-600"
+        >Daftar</a
+      >
+
+      <table class="table-auto border border-slate-500 w-full my-5 rounded-lg mx-auto text-lg">
+        <tr class="bg-slate-300">
+          <th>No.</th>
+          <th>Nama</th>
+          <th>Sesi</th>
+          <th>Hari</th>
+          <th>Waktu</th>
+        </tr>
+        <% if (piket.length === 0) { %>
+          <tr>
+            <td colspan="5" class="text-center text-slate-600">Tidak ada daftar piket</td>
+          </tr>
+        <% } %>
+        <% piket.forEach((pkt, i) => { %>
+        <tr class="border">
+          <td class="text-center"><%= i + 1 %></td>
+          <td><%= pkt.nama %></td>
+          <td class="text-center"><%= pkt.sesi %></td>
+          <td class="text-center"><%= pkt.hari%></td>
+          <td class="text-center"><%= pkt.waktu %></td>
+        </tr>
+        <% }) %>
+      </table>
+    </div>
+  </div>
+</div>
