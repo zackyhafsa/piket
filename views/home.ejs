@@ -11,26 +11,29 @@
           <th>Sesi</th>
           <th>Waktu</th>
         </tr>
+
         <% if (hari === "Jumat" || hari === "Sabtu" || hari === "Minggu") { %>
         <tr>
           <td colspan="4" class="text-center text-slate-600">Tidak ada yang piket</td>
         </tr>
-        <% } %> <% if (jam < 9) { %>
+        <% } %> <% if (jam < 9 && hari === "Senin" || hari === "Selasa" || hari === "Rabu" || hari
+        === "Kamis") { %>
         <tr>
-          <td colspan="4" class="text-center text-slate-600">Piket Belum Dimulai</td>
+          <td colspan="4" class="text-center text-slate-600">Piket belum Dimulai</td>
         </tr>
-        <% } else if (jam > 15) { %>
+        <% } else if (jam < 15 && hari === "Senin" || hari === "Selasa" || hari === "Rabu" || hari
+        === "Kamis") { %>
         <tr>
-          <td colspan="4" class="text-center text-slate-600">Piket Sudah Selesai</td>
+          <td colspan="4" class="text-center text-slate-600">piket sudah selesai</td>
         </tr>
-        <% } else { %> <% piket.forEach((pkt) => { %> <% if (pkt.hari === hari) {%>
+        <% } %><% piket.forEach((pkt) => { %> <% if (pkt.hari === hari && jam >= 9 && jam <= 15){%>
         <tr>
           <td class="border text-center"><%= i++ %></td>
           <td class="border"><%= pkt.nama %></td>
           <td class="border text-center"><%= pkt.sesi %></td>
           <td class="border text-center"><%= pkt.waktu %></td>
         </tr>
-        <% } %> <% }) %><% } %>
+        <% } %> <% }) %>
       </table>
     </div>
   </div>
